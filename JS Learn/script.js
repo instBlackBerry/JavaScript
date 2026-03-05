@@ -176,7 +176,7 @@ console.log(persona3)// итог true
 // и потом конвертируем его в обратно в объект
 // мы получаем новый объект и меняем любые свойства
 //
-const translate = JSON.parse(JSON.stringify(persona1))
+const translate = structuredClone(persona1)
 translate.name = 'petr'
 translate.character.lucker = 'tracker'
 console.log(translate)
