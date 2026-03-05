@@ -110,3 +110,74 @@ let t = JSON.stringify(post)
 console.log(t)
 let a = JSON.parse(t)
 console.log(a)
+
+const person = {
+    name: 'bob',
+    age: 21
+}
+person.age = 22
+person.isAdult = true
+
+console.log(person.age, person.isAdult)
+
+const green = {
+    he: 'red',
+    she: 'blue'
+}
+const black = green
+
+green.he = 'gray'
+green.mast = 'white'
+console.log(black)
+console.log(green)
+
+//=========================
+//как избежать мутаций объекта(не копировать его)
+//=========================
+
+const persona = {
+    age: 24,
+    name: 'Garen',
+    character: {
+        lucker: 'yes',
+        bad: false // false
+    }
+}
+
+//не копируется только родитель, все вложенные объекты
+//будут скопированы!!!!
+console.log(persona)
+const persona2 = Object.assign({}, persona)
+persona2.name = 'Oleg'// а родитель стал олегом только в persona2
+console.log(persona2)
+persona.character.bad = true //true
+console.log(persona) // итог true
+console.log(persona2)// итог true
+// тоже самое через двоеточие
+
+
+const persona1 = {
+    age: 33,
+    name: 'artem',
+    character: {
+        lucker: 'no',
+        bad: false // false
+    }
+}
+
+const persona3 = { ...persona1 }
+persona3.name = 'Ivan'// а родитель стал иваном только в persona3
+persona.character.bad = true //true
+console.log(persona1) // итог true
+console.log(persona3)// итог true
+
+
+// здесь еще 1 вариант, закидываем объект в строку( json.stringify(personal1))
+// и потом конвертируем его в обратно в объект
+// мы получаем новый объект и меняем любые свойства
+//
+const translate = JSON.parse(JSON.stringify(persona1))
+translate.name = 'petr'
+translate.character.lucker = 'tracker'
+console.log(translate)
+console.log(persona1)
