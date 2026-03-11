@@ -144,16 +144,13 @@ const persona = {
     }
 }
 
-//не копируется только родитель, все вложенные объекты
-//будут скопированы!!!!
-console.log(persona)
+//в родителе можно поменять значение
 const persona2 = Object.assign({}, persona)
-persona2.name = 'Oleg'// а родитель стал олегом только в persona2
-console.log(persona2)
-persona.character.bad = true //true
-console.log(persona) // итог true
+persona2.name = 'Oleg'// родитель стал олегом только в persona2
+persona.character.bad = true // поменялось на True 
+console.log(persona) // итог false
 console.log(persona2)// итог true
-// тоже самое через двоеточие
+
 
 
 const persona1 = {
